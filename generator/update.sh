@@ -10,3 +10,4 @@ sql local < toLocal.sql
 rm dump.sql
 #Cleanup
 sql cswiki < cleanUp.sql
+date '+%d. %m %Y' > /data/project/urbanecmbot/mostLinkedMissing/public/date.txt
