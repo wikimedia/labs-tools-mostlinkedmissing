@@ -55,13 +55,20 @@ if 'QUERY_STRING' in os.environ:
 		offset = int(qs['offset'][0])
 	except:
 		offset = 0
+	try:
+		if qs['smer'][0] == 'asc':
+			smer = 'asc'
+		else:
+			smer = 'desc'
+	except:
+		smer = 'desc'
 	if 'special' in qs:
 		if qs['special'][0] == 'first':
 			nosql = True
-			sql = 'select * from mostLinkedMissing where namespace=0 order by value desc limit ' + str(offset) + ', 100;'
+			sql = 'select title, value from mostLinkedMissing where namespace=0 order by value desc limit ' + str(offset) + ', 100;'
 		if qs['special'][0] == 'last':
 			nosql = True
-			sql = 'select * from mostLinkedMissing where namespace=0 order by value limit ' + str(offset) + ', 100;'
+			sql = 'select title, value from mostLinkedMissing where namespace=0 order by value limit ' + str(offset) + ', 100;'
 
 
 #Init db conn
@@ -76,9 +83,11 @@ with cur:
 		cur.execute(sql)
 		data = cur.fetchall()
 	else:
-		pass
+		sql = 'select title, value from mostLinkedMissing where namespace=0 and title like "' + title + '%" order by value ' + smer + ' limit ' + str(offset) + ', 100;'
+		cur.execute(sql)
+		data = cur.fetchall()
 
-table = HTML.table(data, header_row=['Jmenný prostor', 'Stránka', 'Počet odkazů'])
+table = HTML.table(data, header_row=['Stránka', 'Počet odkazů'])
 print table
 
 tail()
