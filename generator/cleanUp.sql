@@ -1,3 +1,3 @@
 ##Run on cswiki.labsdb
 
-drop database u13367__mostLinkedMissing;
+drop database s52741__mostLinkedMissing;
