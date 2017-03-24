@@ -65,10 +65,12 @@ if 'QUERY_STRING' in os.environ:
 	if 'special' in qs:
 		if qs['special'][0] == 'first':
 			nosql = True
+			special = 'first'
 			sql = 'select title, value from mostLinkedMissing where namespace=0 order by value desc limit ' + str(offset) + ', 100;'
 		if qs['special'][0] == 'last':
 			nosql = True
 			sql = 'select title, value from mostLinkedMissing where namespace=0 order by value limit ' + str(offset) + ', 100;'
+			special = 'last'
 
 
 #Init db conn
@@ -89,5 +91,18 @@ with cur:
 
 table = HTML.table(data, header_row=['Stránka', 'Počet odkazů'])
 print table
+
+urlNext = 'process.py?title=' + title + '&offset=' + str(offset+100)
+if nosql:
+	urlNext += "&special=" + special
+urlPrev = "process.py?title=" + title + '&offset=' + str(offset-100)
+if nosql:
+	urlPrev += "&special=" + special
+
+toPrint = '<a href="' + urlNext + '">Další</a>'
+if offset != 0:
+	toPrint += ' <a href="' + urlPrev + '">Předchozí</a>'
+
+print toPrint
 
 tail()
