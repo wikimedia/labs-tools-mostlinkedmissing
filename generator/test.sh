@@ -1,0 +1,1 @@
+sql cswiki < updateReplica.sql
