@@ -58,10 +58,10 @@ if 'QUERY_STRING' in os.environ:
 	if 'special' in qs:
 		if qs['special'][0] == 'first':
 			nosql = True
-			sql = 'select * from mostLinkedMissing where namespace=0 order by value limit ' + str(offset) + ', 100;'
+			sql = 'select * from mostLinkedMissing where namespace=0 order by value desc limit ' + str(offset) + ', 100;'
 		if qs['special'][0] == 'last':
 			nosql = True
-			sql = 'select * from mostLinkedMissing where namespace=0 order by value desc limit ' + str(offset) + ', 100;'
+			sql = 'select * from mostLinkedMissing where namespace=0 order by value limit ' + str(offset) + ', 100;'
 
 
 #Init db conn
