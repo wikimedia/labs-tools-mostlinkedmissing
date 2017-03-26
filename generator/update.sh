@@ -13,4 +13,4 @@ sql cswiki < cleanUp.sql
 #Rename tables so the tool really uses them, keep the last one as backup
 sql local < renameTables.sql
 #Update date in the tool
-date '+%d. %m %Y' > /data/project/urbanecmbot/mostLinkedMissing/public/date.txt
+date '+%d. %m %Y' > /data/project/mostlinkedmissing/mostlinkedmissing/public/date.txt

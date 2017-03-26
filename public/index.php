@@ -17,6 +17,6 @@
 			<li><a href="process.py?title=a&offset=0&special=last">Posledních 100 nejlikovanějších článků</a></li>
 		</ol>
 		<br/>
-		<p>Program využívá dat z <?php echo(file_get_contents("/data/project/urbanecmbot/mostLinkedMissing/public/date.txt")); ?> </p>
+		<p>Program využívá dat z <?php echo(file_get_contents("/data/project/mostlinkedmissing/mostlinkedmissing/public/date.txt")); ?> </p>
 	</body>
 </html>
