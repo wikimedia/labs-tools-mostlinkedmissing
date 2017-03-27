@@ -2,7 +2,7 @@
 <html lang="cs-cz">
 	<head>
 		<meta charset="utf-8" />
-		<title>Chybějící stránky (i s odkazy)</title>
+		<title>Nejodkazovanější chybějící stránky</title>
 	</head>
 	<body>
 		<form method="GET" action="process.py">
