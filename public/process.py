@@ -9,7 +9,7 @@ import sys
 import HTML
 import os
 from wmflabs import db
-conn = db.connect("s52741__mostLinkedMissing")
+conn = db.connect("s53348__mostLinkedMissing")
 
 #Print header
 print 'Content-type: text/html\n'
