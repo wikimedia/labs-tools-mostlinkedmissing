@@ -23,7 +23,7 @@ print """
                 <title>Chybějící stránky</title>
         </head>
         <body>
-		<p><a href="index.html">Zpět</a>
+		<p><a href="index.php">Zpět</a>
 """
 ###############FUNCTIONS######################
 #Print end header
