@@ -24,4 +24,5 @@ with conn.cursor() as cur:
 for row in data:
 	with conn.cursor() as cur:
 		sql = 'insert into mostLinkedMissingNew(namespace, title, value) values(' + str(row[0]) + ', "' + row[1] + '", ' + str(row[2]) + ');'
+		print sql
 		cur.execute(sql)
