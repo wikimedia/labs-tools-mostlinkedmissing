@@ -21,6 +21,10 @@ with conn.cursor() as cur:
 	sql = 'create table mostLinkedMissingNew ( namespace int , title varchar(256) , value int );'
 	cur.execute(sql)
 
+with conn.cursor() as cur:
+	sql = 'set charset utf8;'
+	cur.execute(sql)
+
 for row in data:
 	with conn.cursor() as cur:
 		sql = 'insert into mostLinkedMissingNew(namespace, title, value) values(' + str(row[0]) + ', "' + row[1].replace('"', '\\"') + '", ' + str(row[2]) + ');'
