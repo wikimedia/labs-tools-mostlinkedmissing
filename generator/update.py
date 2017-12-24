@@ -2,6 +2,7 @@
 #-*- coding: utf-8 -*-
 
 from __future__ import generators
+import datetime
 from wmflabs import db
 
 def ResultIter(cursor, arraysize=1000):
@@ -38,3 +39,19 @@ with conn.cursor() as cur:
 		with tconn.cursor() as cur2:
 			sql = 'insert into mostLinkedMissingNew(namespace, title, value) values(' + str(row[0]) + ', "' + row[1].replace('"', '\\"') + '", ' + str(row[2]) + ');'
 			cur2.execute(sql)
+
+with tconn.cursor() as cur:
+	sql = 'drop table if exists mostLinkedMissingOld'
+	cur.execute(sql)
+
+with tconn.cursor() as cur:
+	sql = 'alter table mostLinkedMissing rename to mostLinkedMissingOld'
+	cur.execute(sql)
+
+with tconn.cursor() as cur:
+	sql = 'alter table mostLinkedMissingNew rename to mostLinkedMissing'
+	cur.execute(sql)
+
+day = datetime.date.today().strftime('%d. %m. %Y')
+with open('/data/project/mostlinkedmissing/mostlinkedmissing/public/date.txt', 'w') as f:
+	f.write(day)
