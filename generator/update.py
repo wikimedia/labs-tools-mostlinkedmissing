@@ -37,5 +37,4 @@ with conn.cursor() as cur:
 	for row in ResultIter(cur):
 		with tconn.cursor() as cur2:
 			sql = 'insert into mostLinkedMissingNew(namespace, title, value) values(' + str(row[0]) + ', "' + row[1].replace('"', '\\"') + '", ' + str(row[2]) + ');'
-			print sql
 			cur2.execute(sql)
